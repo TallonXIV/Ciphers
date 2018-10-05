@@ -20,6 +20,7 @@ public class Encrypt {
 		System.out.println("\n" + "Message after preparation, but before encryption: \n" + message + "\n");
 		System.out.println("Pairs derived from message string: ");
 		while(iterator != message.length()) {
+			
 			//alternate between array elements to fill using swapper value
 			pair[swapper] = message.charAt(iterator);
 			if(swapper == 0) {
@@ -29,6 +30,7 @@ public class Encrypt {
 				swapper = 0;
 			}
 			iterator++;
+			
 			//print every time 2 pairs are joined
 			if(iterator % 2 == 0) {
 				for(int i = 0; i < 2; i++) {
@@ -39,6 +41,7 @@ public class Encrypt {
 				//get row (i) and column(j) values for characters
 				for(int i = 0; i < 5; i++) {
 					for(int j = 0; j < 5; j++) {
+						
 						//if the coordinated if the Letter are found, put the coordinates into variables and set it to found
 						if(table[i][j] == pair[0]) {
 							rowOfElOne = i;
@@ -58,7 +61,8 @@ public class Encrypt {
 						
 						//if both values of the pair have had their coordinates discovered
 						if(El1Found == true && El2Found == true) {	
-							//Enforcement of Rule 1: matching columns
+							
+							//Enforcement of Rule 1: matching rows
 							if(rowOfElOne == rowOfElTwo) {
 								//this check allows to wrap around to the other side if it goes of
 								if(colOfElOne != 4){
@@ -77,7 +81,8 @@ public class Encrypt {
 								encryption += pair[0];
 								encryption += pair[1];
 							}//end if
-							//Enforcement of Rule 2: matching rows
+							
+							//Enforcement of Rule 2: matching columns
 							else if(colOfElOne == colOfElTwo) {
 								//this check allows to wrap around to the other side if it goes off
 								if(rowOfElOne != 4) {
@@ -96,6 +101,7 @@ public class Encrypt {
 								encryption += pair[0];
 								encryption += pair[1];
 							}//end else
+							
 							//Enforcement of Rule 3: Rectangular formation
 							else {
 								pair[0] = table[rowOfElOne][colOfElTwo];

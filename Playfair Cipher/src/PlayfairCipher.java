@@ -21,6 +21,7 @@ public class PlayfairCipher {
 		String processSelection;
 		boolean correctProcessInput = false;
 		
+		//selection of desired process
 		System.out.println("Would you like to encrypt a message or decrypt a message?(E/D)?");
 		while(!correctProcessInput) {
 			processSelection = input.nextLine();
@@ -29,17 +30,20 @@ public class PlayfairCipher {
 			case "E":
 				encrypt = true;
 				correctProcessInput = true;
+				System.out.println("================ENCRYPTION================");
 				break;
 			case "d":
 			case "D":
 				decrypt = true;
 				correctProcessInput = true;
+				System.out.println("================DECRYPTION================");
 				break;
 			default:
 				System.out.print("Incorrect Slection. Try again:");
 			}//end switch
 		}//end while
 		
+		//user to enter keyword and message
 		System.out.print("Enter the keyword (NO SYMBOLS OR NUMBERS): ");
 		while(!keywordValid) {
 			keyword = input.nextLine();
@@ -69,6 +73,7 @@ public class PlayfairCipher {
 			message = ef.inputFormatter(message);
 		}
 		
+		//call to build table
 		TableBuilder tb = new TableBuilder();
 		tb.buildTable(keyword, message, encrypt, decrypt);
 	}//end userInput

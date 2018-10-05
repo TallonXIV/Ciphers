@@ -82,6 +82,7 @@ public class TableBuilder {
 				}//end for
 			}//end for
 		}//end while
+		
 		//Print table
 		System.out.println("\nEncryption Table based on keyword/phrase:");
 		System.out.println("___________________");
