@@ -54,11 +54,6 @@ public class Decrypt {
 							colOfElTwo = j;
 							El2Found = true;
 						}
-						//this stops these values from carrying over into the next pair searches
-						if(i == 4 && j ==4) {
-							El1Found = false;
-							El2Found = false;
-						}
 						//if both values of the pair have had their coordinates discovered
 						if(El1Found == true && El2Found == true) {	
 							
@@ -108,6 +103,11 @@ public class Decrypt {
 								pair[1] = table[rowOfElTwo][colOfElOne];
 								decryption += pair[0];
 								decryption += pair[1];
+							}
+							//this stops these values from carrying over into the next pair searches
+							if(i == 4 && j == 4) {
+								El1Found = false;
+								El2Found = false;
 							}
 							//this is necessary so it does not loop trying to search the 2d array for its new values
 							El1Found = false;
