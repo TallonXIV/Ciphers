@@ -48,7 +48,7 @@ public class PlayfairCipher {
 		while(!keywordValid) {
 			keyword = input.nextLine();
 			//checks if contains symbols
-			if(keyword.matches("^.*[^a-zA-Z].*$")) {
+			if(keyword.matches("^.*[^a-zA-Z ].*$")) {
 				System.out.print("Incorrect. Try again (NO SYMBOLS OR NUMBERS): ");
 			}
 			else {

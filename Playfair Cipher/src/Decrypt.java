@@ -119,17 +119,18 @@ public class Decrypt {
 			}//end if
 		}//while
 		
-		//output of decrypted string before post processing
+		//output of decryption string before post processing
 		System.out.println("\n\nRaw Decryption: ");
 		System.out.println(decryption);
+		
 		//post-string formatting to remove extraneous X's put during encrypt formatting
 		for(int i = 0; i < decryption.length(); i++) {
 			if(decryption.charAt(i) == 'X' && i != (decryption.length() - 1)) {
 				if(decryption.charAt(i - 1) == decryption.charAt(i + 1)) {
 					decryption = decryption.replace("X", "");
 				}
-			}
-		}
+			}//end if
+		}//end for
 		
 		//remove tail if one was added
 		if(getAddedToTail()) {
