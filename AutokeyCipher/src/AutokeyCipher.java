@@ -1,16 +1,10 @@
-import java.util.Scanner;
-
 public class AutokeyCipher {
 	public static void main(String[] args) {
-		boolean validKeyword = false;
-		boolean validMessage = false;
-		
 		String message = "";
 		String keyword = "";
 		String keywordAndMessage = "";
 		String encryptedMessage = "";
 		
-		int keywordFiller = 0;
 		int pair1XVal = 0;
 		int pair2YVal = 0;
 		
@@ -37,48 +31,19 @@ public class AutokeyCipher {
 			System.out.print("\n");
 		}//end for
 		
-		Scanner input = new Scanner(System.in);
+		//take and format strings
+		InputAndFormatStrings fs = new InputAndFormatStrings();
+		
 		System.out.println("Enter a keyword to use");
-		while(!validKeyword) {
-			keyword = input.nextLine();
-			if(keyword.matches("^.*[^a-zA-Z ].*$")) {
-				System.out.print("Only enter letters. Try again: ");
-			}
-			else {
-				validKeyword = true;
-			}
-		}//end while
+		keyword = fs.takeAndFormatInputs(keyword);
 		
-		System.out.println("Enter a message");
-		while(!validMessage) {
-			message = input.nextLine();
-			if(message.matches("^.*[^a-zA-Z ].*$")) {
-				System.out.print("Only letters. Try again: ");
-			}
-			else {
-				validMessage = true;
-			}
-		}//end while
+		System.out.println("Enter a message to encrypt");
+		message = fs.takeAndFormatInputs(message);
+		keywordAndMessage = fs.buildKeywordAndMessageString(keyword, message);
 		
-		keyword = keyword.replaceAll(" ", "");
-		message = message.replaceAll(" ", "");
-		
-		keyword = keyword.toUpperCase();
-		message = message.toUpperCase();
-		
-		for(int j = 0; j < keyword.length(); j++) {
-			keywordAndMessage += keyword.charAt(j);
-		}
-		if(keywordAndMessage.length() <= message.length()) {
-			for(int i = 0; i < message.length(); i++) {
-				keywordAndMessage += message.charAt(i);
-				if(keywordAndMessage.length() == message.length()) {
-					break;
-				}
-			}//end for
-		}//end if
 		System.out.println(message + "\n" + keywordAndMessage);
 		
+		//encrypt message based on each letter of the keyword and message
 		for(int i = 0; i < message.length(); i++) {
 			pairArray[0] = message.charAt(i);
 			pairArray[1] = keywordAndMessage.charAt(i);
@@ -94,4 +59,5 @@ public class AutokeyCipher {
 		}//end for
 		System.out.println(encryptedMessage);
 	}//end main
+	
 }//end class
