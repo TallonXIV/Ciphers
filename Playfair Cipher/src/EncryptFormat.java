@@ -1,7 +1,6 @@
 
 public class EncryptFormat {
 	public String inputFormatter(String message) {
-		Decrypt d = new Decrypt();
 		boolean hasTail;
 		System.out.println("\nMessage before preparation and encryption: \n" + message);
 		
